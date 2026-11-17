@@ -1,0 +1,22 @@
+# ============================================================================
+# 镜像烘焙栈变量示例（复制为 terraform.tfvars 后填入实际值）
+# 注意：请勿将真实凭据提交到代码库；请在本机终端设置华为云凭据
+# ============================================================================
+
+region            = "cn-north-4"
+project_name      = "vscode-bake"
+availability_zone = "cn-north-4a"
+flavor_id         = "s6.large.2"
+volume_size       = 40
+bandwidth_size    = 10
+
+# 预置软件版本（与 infra/ 主栈保持期望一致）
+code_server_version = "4.141.0"
+node_version        = "20.11.0"
+
+# 可选：烘焙完成后向该 ntfy.sh 主题推送结果通知；留空则不推送
+ntfy_topic = ""
+
+# 是否基于构建实例创建私有镜像：
+#   第一步 apply 时保持 false（仅烘焙），确认烘焙完成后再置 true apply 一次
+create_image = false
