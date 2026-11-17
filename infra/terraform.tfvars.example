@@ -1,0 +1,24 @@
+# ============================================================================
+# 变量示例（复制为 terraform.tfvars 后填入实际值）
+# 注意：请勿将真实凭据提交到代码库
+# ============================================================================
+
+region            = "cn-north-4"
+project_name      = "browser-vscode-dev-env"
+availability_zone = "cn-north-4a"
+flavor_id         = "s6.large.2"
+volume_size       = 128
+bandwidth_size    = 5
+
+# 允许访问 8080 端口的源 IP 段；部署前请改为本机公网 IP 或办公网段，切勿保留 0.0.0.0/0
+allowed_cidr = "0.0.0.0/0"
+
+# 浏览器版 VS Code 访问密码，至少 12 位，请使用强口令
+vscode_password = "Replace-This-Password-1234"
+
+# 预置私有镜像 ID（由 infra/image-bake 烘焙产出，terraform output image_id）；
+# 留空则使用公共 Ubuntu 镜像并在开机时自动安装（国内网络下载安装包较慢）
+private_image_id = ""
+
+# 可选：部署后健康检查通知主题（ntfy.sh，如 my-private-topic）；留空则不推送
+healthcheck_topic = ""
